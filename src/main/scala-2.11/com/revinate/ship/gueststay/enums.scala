@@ -13,3 +13,5 @@ object StatusCode extends Enumeration {
   type StatusCode = Value
   val REQUESTED, RESERVED, WAITLISTED, REQUESTDENIED, INHOUSE, CANCELED, NOSHOW, CHECKEDOUT = Value
 }
+
+class StatusCodeType extends TypeReference[StatusCode.type]
