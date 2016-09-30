@@ -1,0 +1,19 @@
+= SHIP Scala Bindings
+
+The Simple Hospitality Interchange Protocol, or SHIP, is a JSON-based message format, combined with a simple HTTP-based API, that aims to make it easy for hospitality-related systems and applications to exchange messages. This library is a Scala 2.11 implementation of the SHIP message types.
+
+For more details about SHIP please refer to the https://github.com/revinate/ship-sdk[ship-sdk] project.
+
+== Requirements
+
+* Java 1.8 and later.
+* Scala 2.11 and later.
+* Jackson Annotations 2.8 and later.
+
+== Versioning
+
+Version numbers of this library follow the `MAJOR.MINOR.PATCH` format, where `MAJOR.MINOR` refer to the version of the SHIP message specifications being implemented. For example, version `1.0.3` of this library implements SHIP message specifications version `1.0`.
+
+== License
+
+This library is under the MIT License.
