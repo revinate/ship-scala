@@ -44,6 +44,19 @@ class MonetaryValueTest extends PropSpec with TableDrivenPropertyChecks with Mat
     }
   }
 
+  property("two zero monetary amount can add independent of the currency") {
+    val examples = Table(
+      ("left", "right", "expected"),
+      (MonetaryValue(0, "USD"), MonetaryValue(0, "USD"), MonetaryValue(0, "USD")),
+      (MonetaryValue(0, "USD"), MonetaryValue(0, "EUR"), MonetaryValue.zero)
+    )
+
+    forAll(examples) { (left, right, expected) =>
+      left + right shouldEqual Some(expected)
+      right + left shouldEqual Some(expected)
+    }
+  }
+
   property("a full monetary value can add to zero with any currency") {
     val examples = Table(
       ("left", "right"),
@@ -64,7 +77,7 @@ class MonetaryValueTest extends PropSpec with TableDrivenPropertyChecks with Mat
       ("amount", "multiplier", "result"),
       (MonetaryValue(25, "USD"), 4, MonetaryValue(100, "USD")),
       (MonetaryValue(25), 4, MonetaryValue(100)),
-      (MonetaryValue(0), 4, MonetaryValue(0)),
+      (MonetaryValue.zero, 4, MonetaryValue.zero),
       (MonetaryValue(None, None), 4, MonetaryValue(None, None))
     )
 

@@ -41,7 +41,7 @@ case class MonetaryValue(value: Option[BigDecimal] = None, currency: Option[Stri
       (this.value, that.value) match {
         case (Some(v1), Some(v2)) if v1 != 0 && v2 == 0 => Some(MonetaryValue(v1, curr1))
         case (Some(v1), Some(v2)) if v1 == 0 && v2 != 0 => Some(MonetaryValue(v2, curr2))
-        case (Some(v1), Some(v2)) if v1 == 0 && v2 == 0 => Some(MonetaryValue(Some(v1), None))
+        case (Some(v1), Some(v2)) if v1 == 0 && v2 == 0 => Some(MonetaryValue.zero)
         case (Some(v1), None) => Some(MonetaryValue(v1, curr1))
         case (None, Some(v2)) => Some(MonetaryValue(v2, curr2))
         case _ => None
