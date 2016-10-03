@@ -1,9 +1,8 @@
 package com.revinate.ship.common
 
+import com.revinate.ship.implicits._
 import org.scalatest.prop.TableDrivenPropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-
-import com.revinate.ship.implicits._
 
 class MonetaryAmountTest extends PropSpec with TableDrivenPropertyChecks with Matchers {
 
@@ -26,6 +25,19 @@ class MonetaryAmountTest extends PropSpec with TableDrivenPropertyChecks with Ma
       ("left", "right"),
       (MonetaryAmount(250.usd, 25.usd), MonetaryAmount(0.eur, 0.eur)),
       (MonetaryAmount(MonetaryValue.zero, 25.usd), MonetaryAmount(250.usd, MonetaryValue.zero))
+    )
+
+    forAll(examples) { (left, right) =>
+      left + right shouldEqual Some(MonetaryAmount(250.usd, 25.usd))
+      right + left shouldEqual Some(MonetaryAmount(250.usd, 25.usd))
+    }
+  }
+
+  property("a monetary amount can add to empty") {
+    val examples = Table(
+      ("left", "right"),
+      (MonetaryAmount(250.usd, 25.usd), MonetaryAmount.empty),
+      (MonetaryAmount(Some(250.usd), None), MonetaryAmount(None, Some(25.usd)))
     )
 
     forAll(examples) { (left, right) =>

@@ -7,6 +7,13 @@ object MonetaryValue {
   def apply(value: BigDecimal) = new MonetaryValue(value, None)
 
   def apply(value: BigDecimal, currency: String) = new MonetaryValue(value, Option(currency))
+
+  def addValues(left: Option[MonetaryValue], right: Option[MonetaryValue]): Option[MonetaryValue] = (left, right) match {
+    case (Some(leftValue), None) => Some(leftValue)
+    case (None, Some(rightValue)) => Some(rightValue)
+    case (Some(leftValue), Some(rightValue)) => leftValue + rightValue
+    case _ => None
+  }
 }
 
 case class MonetaryValue(value: BigDecimal, currency: Option[String] = None) {
