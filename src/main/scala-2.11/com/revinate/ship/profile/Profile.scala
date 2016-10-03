@@ -52,6 +52,8 @@ case class Profile(
     primaryLanguage: Option[String] = None,
     companyInfo: Option[CompanyInfo] = None,
     emailOptOut: Option[Boolean] = None,
-    mailOptOut: Option[Boolean] = None
+    mailOptOut: Option[Boolean] = None,
+    emailAddresses: List[EmailAddress] = List.empty,
+    postalAddresses: Vector[PostalAddress] = Vector.empty
 )
 
