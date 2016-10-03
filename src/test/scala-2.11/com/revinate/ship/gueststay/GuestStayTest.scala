@@ -4,6 +4,8 @@ import java.time.LocalDate.{parse => parseDate}
 import java.time.OffsetDateTime.{parse => parseDateTime}
 
 import com.revinate.ship.JacksonSupport
+import com.revinate.ship.common.MonetaryAmount
+import com.revinate.ship.implicits._
 import org.scalatest.{FreeSpec, Matchers}
 
 class GuestStayTest extends FreeSpec with Matchers with JacksonSupport {
@@ -46,7 +48,14 @@ class GuestStayTest extends FreeSpec with Matchers with JacksonSupport {
             blockCode = Some("KING-Block"),
             numberOfRooms = Some(1),
             market = Some("ALL"),
-            purposeOfStay = Some("BUSINESS")
+            purposeOfStay = Some("BUSINESS"),
+            totalRoomRevenue = Some(MonetaryAmount(404.5.usd, 35.39.usd)),
+            totalFoodAndBeverageRevenue = Some(MonetaryAmount(4.99.usd, 0.43.usd)),
+            totalLuggageRevenue = Some(MonetaryAmount(49.99.usd, 4.37.usd)),
+            totalOtherRevenue = Some(MonetaryAmount(11.25.usd, 0.98.usd)),
+            totalRemainingBalance = Some(24.55.usd),
+            totalDepositRequired = Some(24.55.usd),
+            depositRequiredDate = Some(parseDate("2009-08-15"))
           )
         )
       }

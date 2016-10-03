@@ -3,7 +3,7 @@ package com.revinate.ship.gueststay
 import java.time.{LocalDate, OffsetDateTime}
 
 import com.fasterxml.jackson.module.scala.JsonScalaEnumeration
-import com.revinate.ship.common.CompanyInfo
+import com.revinate.ship.common.{CompanyInfo, MonetaryAmount, MonetaryValue}
 import com.revinate.ship.gueststay.Action._
 import com.revinate.ship.gueststay.StatusCode._
 
@@ -24,7 +24,7 @@ case class GuestStay(
     cancellationNumber: Option[String] = None,
     cancellationDate: Option[OffsetDateTime] = None,
     canceledBy: Option[String] = None,
-    checkinDate: Option[LocalDate] = None ,
+    checkinDate: Option[LocalDate] = None,
     actualCheckinDate: Option[OffsetDateTime] = None,
     checkedInBy: Option[String] = None,
     checkoutDate: Option[LocalDate] = None,
@@ -40,7 +40,15 @@ case class GuestStay(
     numberOfRooms: Option[Int] = None,
     market: Option[String] = None,
     purposeOfStay: Option[String] = None,
-    companyInfo: Option[CompanyInfo] = None
+    companyInfo: Option[CompanyInfo] = None,
+    totalRoomRevenue: Option[MonetaryAmount] = None,
+    totalFoodAndBeverageRevenue: Option[MonetaryAmount] = None,
+    totalLuggageRevenue: Option[MonetaryAmount] = None,
+    totalOtherRevenue: Option[MonetaryAmount] = None,
+    totalTaxes: Option[MonetaryValue] = None,
+    totalRemainingBalance: Option[MonetaryValue] = None,
+    totalDepositRequired: Option[MonetaryValue] = None,
+    depositRequiredDate: Option[LocalDate] = None
 )
 
 
