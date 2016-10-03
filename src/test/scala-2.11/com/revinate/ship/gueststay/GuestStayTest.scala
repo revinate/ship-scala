@@ -4,6 +4,7 @@ import java.time.LocalDate.{parse => parseDate}
 import java.time.OffsetDateTime.{parse => parseDateTime}
 
 import com.revinate.ship.JacksonSupport
+import com.revinate.ship.common.TimeSpan.TimeSpanUnit
 import com.revinate.ship.common.{MonetaryAmount, TimeSpan}
 import com.revinate.ship.gueststay.Rate.RateTimeUnit
 import com.revinate.ship.implicits._
@@ -72,7 +73,21 @@ class GuestStayTest extends FreeSpec with Matchers with JacksonSupport {
                   Rate(99.5.usd, parseDateTime("2007-07-20T00:00:00.000-07:00"), 1, RateTimeUnit.DAY),
                   Rate(105.usd, parseDateTime("2007-07-21T00:00:00.000-07:00"), 1, RateTimeUnit.DAY)
                 )
-              ))
+              )
+            ),
+            services = List(
+              Service(
+                inventoryCode = "SPA",
+                rateCode = "STD_SPA",
+                timeSpan = Some(TimeSpan(
+                  startTime = parseDateTime("2007-07-19T23:00:00.000-07:00"),
+                  timeUnits = 1,
+                  timeUnitType = TimeSpanUnit.HOUR
+                )),
+                pricePerUnit = MonetaryAmount(25.9.usd, 2.27.usd),
+                numberOfUnits = 2
+              )
+            )
           )
         )
       }
