@@ -1,8 +1,9 @@
 package com.revinate.ship.common
 
-import com.revinate.ship.implicits._
 import org.scalatest.prop.TableDrivenPropertyChecks
 import org.scalatest.{Matchers, PropSpec}
+
+import com.revinate.ship.implicits._
 
 class MonetaryAmountTest extends PropSpec with TableDrivenPropertyChecks with Matchers {
 
