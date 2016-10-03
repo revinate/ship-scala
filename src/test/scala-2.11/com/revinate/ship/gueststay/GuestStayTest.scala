@@ -6,6 +6,7 @@ import java.time.OffsetDateTime.{parse => parseDateTime}
 import com.revinate.ship.JacksonSupport
 import com.revinate.ship.common.TimeSpan.TimeSpanUnit
 import com.revinate.ship.common.{MonetaryAmount, TimeSpan}
+import com.revinate.ship.gueststay.GuestStay.{GuestStayAction, GuestStayStatusCode}
 import com.revinate.ship.gueststay.Rate.RateTimeUnit
 import com.revinate.ship.implicits._
 import org.scalatest.{FreeSpec, Matchers}
@@ -19,12 +20,12 @@ class GuestStayTest extends FreeSpec with Matchers with JacksonSupport {
 
         guestStay should equal(
           GuestStay(
-            action = Action.ADD,
+            action = GuestStayAction.ADD,
             property = "AVERTINE",
             interfaceType = "SHIP",
             remoteSystemName = "avertine_ship",
             confirmationCode = "38001",
-            statusCode = Some(StatusCode.RESERVED),
+            statusCode = Some(GuestStayStatusCode.RESERVED),
             guaranteeCode = Some("CC"),
             lastUpdatedAt = Some(parseDateTime("2009-08-15T16:52:36.000-07:00")),
             lastUpdatedBy = Some("System Agent"),

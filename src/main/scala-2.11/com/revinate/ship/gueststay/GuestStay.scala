@@ -2,18 +2,38 @@ package com.revinate.ship.gueststay
 
 import java.time.{LocalDate, OffsetDateTime}
 
+import com.fasterxml.jackson.core.`type`.TypeReference
 import com.fasterxml.jackson.module.scala.JsonScalaEnumeration
 import com.revinate.ship.common.{CompanyInfo, MonetaryAmount, MonetaryValue}
-import com.revinate.ship.gueststay.Action._
-import com.revinate.ship.gueststay.StatusCode._
+import com.revinate.ship.gueststay.GuestStay.GuestStayAction.Action
+import com.revinate.ship.gueststay.GuestStay.GuestStayStatusCode.StatusCode
+import com.revinate.ship.gueststay.GuestStay.{ActionTypeRef, StatusCodeTypeRef}
+
+object GuestStay {
+
+  object GuestStayAction extends Enumeration {
+    type Action = Value
+    val BOOK, ADD, WAITLIST, CONFIRM, DENY, CANCEL, CHECKIN, NOSHOW, CHECKOUT, EDIT, NA = Value
+  }
+
+  class ActionTypeRef extends TypeReference[GuestStayAction.type]
+
+  object GuestStayStatusCode extends Enumeration {
+    type StatusCode = Value
+    val REQUESTED, RESERVED, WAITLISTED, REQUESTDENIED, INHOUSE, CANCELED, NOSHOW, CHECKEDOUT = Value
+  }
+
+  class StatusCodeTypeRef extends TypeReference[GuestStayStatusCode.type]
+
+}
 
 case class GuestStay(
-    @JsonScalaEnumeration(classOf[ActionType]) action: Action,
+    @JsonScalaEnumeration(classOf[ActionTypeRef]) action: Action,
     property: String,
     interfaceType: String,
     remoteSystemName: String,
     confirmationCode: String,
-    @JsonScalaEnumeration(classOf[StatusCodeType]) statusCode: Option[StatusCode] = None,
+    @JsonScalaEnumeration(classOf[StatusCodeTypeRef]) statusCode: Option[StatusCode] = None,
     guaranteeCode: Option[String] = None,
     lastUpdatedAt: Option[OffsetDateTime] = None,
     lastUpdatedBy: Option[String] = None,
