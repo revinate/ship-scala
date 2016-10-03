@@ -5,6 +5,7 @@ import java.time.OffsetDateTime.{parse => parseDateTime}
 
 import com.revinate.ship.JacksonSupport
 import com.revinate.ship.common.{MonetaryAmount, TimeSpan}
+import com.revinate.ship.gueststay.Rate.RateTimeUnit
 import com.revinate.ship.implicits._
 import org.scalatest.{FreeSpec, Matchers}
 
@@ -62,9 +63,15 @@ class GuestStayTest extends FreeSpec with Matchers with JacksonSupport {
                 timeSpan = Some(TimeSpan(
                   startTime = parseDateTime("2007-07-19T00:00:00.000-07:00"),
                   timeUnits = 3,
-                  timeUnitType = TimeSpan.Units.DAY
+                  timeUnitType = TimeSpan.TimeSpanUnit.DAY
                 )),
-                confidential = Some(true)
+                confidential = Some(true),
+                rates = List(
+                  Rate(100.usd, parseDateTime("2007-07-19T00:00:00.000-07:00"), 1, RateTimeUnit.DAY),
+                  Rate(100.usd, parseDateTime("2007-07-20T00:00:00.000-07:00"), 1, RateTimeUnit.DAY),
+                  Rate(99.5.usd, parseDateTime("2007-07-20T00:00:00.000-07:00"), 1, RateTimeUnit.DAY),
+                  Rate(105.usd, parseDateTime("2007-07-21T00:00:00.000-07:00"), 1, RateTimeUnit.DAY)
+                )
               ))
           )
         )

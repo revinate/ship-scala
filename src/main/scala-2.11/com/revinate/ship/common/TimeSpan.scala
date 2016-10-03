@@ -4,22 +4,22 @@ import java.time.OffsetDateTime
 
 import com.fasterxml.jackson.core.`type`.TypeReference
 import com.fasterxml.jackson.module.scala.JsonScalaEnumeration
-import com.revinate.ship.common.TimeSpan.Units.Units
-import com.revinate.ship.common.TimeSpan.UnitsType
+import com.revinate.ship.common.TimeSpan.TimeSpanUnit.TimeSpanUnit
+import com.revinate.ship.common.TimeSpan.TimeSpanUnitType
 
 object TimeSpan {
 
-  object Units extends Enumeration {
-    type Units = Value
+  object TimeSpanUnit extends Enumeration {
+    type TimeSpanUnit = Value
     val DAY, HOUR, MINUTE = Value
   }
 
-  class UnitsType extends TypeReference[Units.type]
+  class TimeSpanUnitType extends TypeReference[TimeSpanUnit.type]
 
 }
 
 case class TimeSpan(
     startTime: OffsetDateTime,
     timeUnits: Int,
-    @JsonScalaEnumeration(classOf[UnitsType]) timeUnitType: Units
+    @JsonScalaEnumeration(classOf[TimeSpanUnitType]) timeUnitType: TimeSpanUnit
 )

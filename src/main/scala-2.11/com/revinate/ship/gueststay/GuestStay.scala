@@ -49,7 +49,7 @@ case class GuestStay(
     totalRemainingBalance: Option[MonetaryValue] = None,
     totalDepositRequired: Option[MonetaryValue] = None,
     depositRequiredDate: Option[LocalDate] = None,
-    ratePlans: List[RatePlan]
+    ratePlans: List[RatePlan] = List.empty
 )
 
 

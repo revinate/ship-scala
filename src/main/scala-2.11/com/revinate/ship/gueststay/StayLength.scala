@@ -2,17 +2,17 @@ package com.revinate.ship.gueststay
 
 import com.fasterxml.jackson.core.`type`.TypeReference
 import com.fasterxml.jackson.module.scala.JsonScalaEnumeration
-import com.revinate.ship.gueststay.StayLength.Units.Units
-import com.revinate.ship.gueststay.StayLength.UnitsType
+import com.revinate.ship.gueststay.StayLength.StayLengthUnit.StayLengthUnit
+import com.revinate.ship.gueststay.StayLength.StayLengthUnitType
 
 object StayLength {
 
-  object Units extends Enumeration {
-    type Units = Value
+  object StayLengthUnit extends Enumeration {
+    type StayLengthUnit = Value
     val DAY = Value
   }
 
-  class UnitsType extends TypeReference[Units.type]
+  class StayLengthUnitType extends TypeReference[StayLengthUnit.type]
 
   def apply(stayLength: Int): StayLength = new StayLength(Some(stayLength))
 
@@ -20,6 +20,6 @@ object StayLength {
 
 case class StayLength(
     stayLength: Option[Int] = None,
-    @JsonScalaEnumeration(classOf[UnitsType]) stayLengthUnits: Option[Units] = None
+    @JsonScalaEnumeration(classOf[StayLengthUnitType]) stayLengthUnits: Option[StayLengthUnit] = None
 )
 
