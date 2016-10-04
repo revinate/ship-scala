@@ -4,7 +4,7 @@ import java.time.{LocalDate, OffsetDateTime}
 
 import com.fasterxml.jackson.core.`type`.TypeReference
 import com.fasterxml.jackson.module.scala.JsonScalaEnumeration
-import com.revinate.ship.common.{CompanyInfo, MonetaryAmount, MonetaryValue}
+import com.revinate.ship.common.{CompanyInfo, GuestNote, MonetaryAmount, MonetaryValue}
 import com.revinate.ship.gueststay.GuestStay.GuestStayAction.Action
 import com.revinate.ship.gueststay.GuestStay.GuestStayStatusCode.StatusCode
 import com.revinate.ship.gueststay.GuestStay.{ActionTypeRef, StatusCodeTypeRef}
@@ -72,7 +72,8 @@ case class GuestStay(
     depositRequiredDate: Option[LocalDate] = None,
     ratePlans: Vector[RatePlan] = Vector.empty,
     services: Vector[Service] = Vector.empty,
-    profiles: Vector[Profile] = Vector.empty
+    profiles: Vector[Profile] = Vector.empty,
+    guestNotes: Vector[GuestNote] = Vector.empty
 )
 
 

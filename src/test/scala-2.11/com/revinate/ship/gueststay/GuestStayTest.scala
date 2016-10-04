@@ -208,6 +208,24 @@ class GuestStayTest extends FreeSpec with Matchers with JacksonSupport {
                 PhoneNumber("555-555-1234", PhoneNumberType.BUSINESS, primary = true)
               )
             )
+          ),
+          guestNotes = Vector(
+            GuestNote(
+              title = Some("Background Note"),
+              text = "Global Background Note",
+              `type` = Some("Background Notes"),
+              time = Some(parseDateTime("2014-01-16T11:30:38.000-08:00"))
+            ),
+            GuestNote(
+              text = "RATE_FIXED=YES",
+              `type` = Some("SYSTEM"),
+              time = Some(parseDateTime("2009-08-15T16:52:40.000-07:00"))
+            ),
+            GuestNote(
+              text = "DISCOUNT_PERCENTAGE=0",
+              `type` = Some("SYSTEM"),
+              time = Some(parseDateTime("2009-08-15T16:52:40.000-07:00"))
+            )
           )
         )
       }
