@@ -65,6 +65,10 @@ class ProfileTest extends FreeSpec with Matchers with JacksonSupport {
           Vector(
             PhoneNumber("555-123-4567", PhoneNumberType.BUSINESS, primary = true),
             PhoneNumber("415-555-1234", PhoneNumberType.HOME, primary = false, Some(parseDateTime("2007-07-19T00:00:00.000-07:00")))
+          ),
+          Vector(
+            Membership("4800123", Some("ENCORE")),
+            Membership("66760000", Some("OCIS"), Some("GOLD"), Some(parseDate("2010-12-31")))
           )
         )
       }

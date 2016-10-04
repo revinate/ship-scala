@@ -55,7 +55,7 @@ case class Profile(
     mailOptOut: Option[Boolean] = None,
     emailAddresses: List[EmailAddress] = List.empty,
     postalAddresses: Vector[PostalAddress] = Vector.empty,
-    phoneNumbers: Vector[PhoneNumber] = Vector.empty
-
+    phoneNumbers: Vector[PhoneNumber] = Vector.empty,
+    memberships: Vector[Membership] = Vector.empty
 )
 
