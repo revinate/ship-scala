@@ -62,13 +62,31 @@ class ProfileTest extends FreeSpec with Matchers with JacksonSupport {
               inactiveDate = Some(parseDateTime("2007-07-19T00:00:00.000-07:00"))
             )
           ),
-          Vector(
+          phoneNumbers = Vector(
             PhoneNumber("555-123-4567", PhoneNumberType.BUSINESS, primary = true),
             PhoneNumber("415-555-1234", PhoneNumberType.HOME, primary = false, Some(parseDateTime("2007-07-19T00:00:00.000-07:00")))
           ),
-          Vector(
+          memberships = Vector(
             Membership("4800123", Some("ENCORE")),
             Membership("66760000", Some("OCIS"), Some("GOLD"), Some(parseDate("2010-12-31")))
+          ),
+          creditCards = Vector(
+            CreditCard(
+              creditCardLast4 = Some("1234"),
+              creditCardExpirationDate = Some(parseDate("2015-12-31")),
+              creditCardType = Some("AX"),
+              primary = true
+            ),
+            CreditCard(
+              creditCardExpirationDate = Some(parseDate("2012-12-31")),
+              creditCardType = Some("MC"),
+              primary = false
+            ),
+            CreditCard(
+              creditCardExpirationDate = Some(parseDate("2013-04-30")),
+              creditCardType = Some("VA"),
+              primary = false
+            )
           )
         )
       }

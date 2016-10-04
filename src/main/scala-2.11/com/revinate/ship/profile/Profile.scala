@@ -56,6 +56,7 @@ case class Profile(
     emailAddresses: Vector[EmailAddress] = Vector.empty,
     postalAddresses: Vector[PostalAddress] = Vector.empty,
     phoneNumbers: Vector[PhoneNumber] = Vector.empty,
-    memberships: Vector[Membership] = Vector.empty
+    memberships: Vector[Membership] = Vector.empty,
+    creditCards: Vector[CreditCard] = Vector.empty
 )
 
