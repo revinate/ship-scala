@@ -8,6 +8,7 @@ import com.revinate.ship.common.{CompanyInfo, MonetaryAmount, MonetaryValue}
 import com.revinate.ship.gueststay.GuestStay.GuestStayAction.Action
 import com.revinate.ship.gueststay.GuestStay.GuestStayStatusCode.StatusCode
 import com.revinate.ship.gueststay.GuestStay.{ActionTypeRef, StatusCodeTypeRef}
+import com.revinate.ship.profile.Profile
 
 object GuestStay {
 
@@ -70,7 +71,8 @@ case class GuestStay(
     totalDepositRequired: Option[MonetaryValue] = None,
     depositRequiredDate: Option[LocalDate] = None,
     ratePlans: Vector[RatePlan] = Vector.empty,
-    services: Vector[Service] = Vector.empty
+    services: Vector[Service] = Vector.empty,
+    profiles: Vector[Profile] = Vector.empty
 )
 
 
