@@ -35,7 +35,7 @@ class ProfileTest extends FreeSpec with Matchers with JacksonSupport {
           companyInfo = Some(CompanyInfo("Avertine")),
           emailOptOut = Some(false),
           mailOptOut = Some(true),
-          emailAddresses = List(
+          emailAddresses = Vector(
             EmailAddress("info@mailinator.com", primary = true),
             EmailAddress("inactive@mailinator.com", primary = false, Some(parseDateTime("2007-07-19T00:00:00.000-07:00")))
           ),

@@ -53,7 +53,7 @@ case class Profile(
     companyInfo: Option[CompanyInfo] = None,
     emailOptOut: Option[Boolean] = None,
     mailOptOut: Option[Boolean] = None,
-    emailAddresses: List[EmailAddress] = List.empty,
+    emailAddresses: Vector[EmailAddress] = Vector.empty,
     postalAddresses: Vector[PostalAddress] = Vector.empty,
     phoneNumbers: Vector[PhoneNumber] = Vector.empty,
     memberships: Vector[Membership] = Vector.empty

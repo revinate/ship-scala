@@ -59,7 +59,7 @@ class GuestStayTest extends FreeSpec with Matchers with JacksonSupport {
             totalRemainingBalance = Some(24.55.usd),
             totalDepositRequired = Some(24.55.usd),
             depositRequiredDate = Some(parseDate("2009-08-15")),
-            ratePlans = List(
+            ratePlans = Vector(
               RatePlan(
                 rateCode = "SECRET_RATE",
                 timeSpan = Some(TimeSpan(
@@ -76,7 +76,7 @@ class GuestStayTest extends FreeSpec with Matchers with JacksonSupport {
                 )
               )
             ),
-            services = List(
+            services = Vector(
               Service(
                 inventoryCode = "SPA",
                 rateCode = "STD_SPA",
