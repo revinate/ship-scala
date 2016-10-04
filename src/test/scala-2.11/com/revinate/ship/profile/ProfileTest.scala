@@ -4,7 +4,7 @@ import java.time.LocalDate.{parse => parseDate}
 import java.time.OffsetDateTime.{parse => parseDateTime}
 
 import com.revinate.ship.JacksonSupport
-import com.revinate.ship.common.CompanyInfo
+import com.revinate.ship.common.{CompanyInfo, GuestNote}
 import com.revinate.ship.profile.PhoneNumber.PhoneNumberType
 import com.revinate.ship.profile.PostalAddress.AddressType
 import com.revinate.ship.profile.Profile.{ProfileAction, ProfileGender, ProfileType}
@@ -86,6 +86,20 @@ class ProfileTest extends FreeSpec with Matchers with JacksonSupport {
               creditCardExpirationDate = Some(parseDate("2013-04-30")),
               creditCardType = Some("VA"),
               primary = false
+            )
+          ),
+          guestNotes = Vector(
+            GuestNote(
+              title = Some("Profile Background Note"),
+              text = "Profile Background Note Text",
+              `type` = Some("Profile Background Notes"),
+              time = Some(parseDateTime("2013-05-02T16:55:48.000-07:00"))
+            ),
+            GuestNote(
+              title = Some("General Note"),
+              text = "General Note Text",
+              `type` = Some("General Notes"),
+              time = Some(parseDateTime("2013-05-02T16:55:57.000-07:00"))
             )
           )
         )

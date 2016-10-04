@@ -4,7 +4,7 @@ import java.time.LocalDate
 
 import com.fasterxml.jackson.core.`type`.TypeReference
 import com.fasterxml.jackson.module.scala.JsonScalaEnumeration
-import com.revinate.ship.common.CompanyInfo
+import com.revinate.ship.common.{CompanyInfo, GuestNote}
 import com.revinate.ship.profile.Profile.ProfileAction.Action
 import com.revinate.ship.profile.Profile.ProfileGender.Gender
 import com.revinate.ship.profile.Profile.ProfileType.Type
@@ -57,6 +57,7 @@ case class Profile(
     postalAddresses: Vector[PostalAddress] = Vector.empty,
     phoneNumbers: Vector[PhoneNumber] = Vector.empty,
     memberships: Vector[Membership] = Vector.empty,
-    creditCards: Vector[CreditCard] = Vector.empty
+    creditCards: Vector[CreditCard] = Vector.empty,
+    guestNotes: Vector[GuestNote] = Vector.empty
 )
 
