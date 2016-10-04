@@ -48,7 +48,8 @@
       "country": "US",
       "zipCode": "34105",
       "addressType": "BUSINESS",
-      "primary": false
+      "primary": false,
+      "inactiveDate": "2007-07-19T00:00:00.000-07:00"
     }
   ],
   "phoneNumbers": [

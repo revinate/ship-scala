@@ -5,6 +5,7 @@ import java.time.OffsetDateTime.{parse => parseDateTime}
 
 import com.revinate.ship.JacksonSupport
 import com.revinate.ship.common.CompanyInfo
+import com.revinate.ship.profile.PhoneNumber.PhoneNumberType
 import com.revinate.ship.profile.PostalAddress.AddressType
 import com.revinate.ship.profile.Profile.{ProfileAction, ProfileGender, ProfileType}
 import org.scalatest.{FreeSpec, Matchers}
@@ -35,8 +36,8 @@ class ProfileTest extends FreeSpec with Matchers with JacksonSupport {
           emailOptOut = Some(false),
           mailOptOut = Some(true),
           emailAddresses = List(
-            EmailAddress("info@mailinator.com", true),
-            EmailAddress("inactive@mailinator.com", false, Some(parseDateTime("2007-07-19T00:00:00.000-07:00")))
+            EmailAddress("info@mailinator.com", primary = true),
+            EmailAddress("inactive@mailinator.com", primary = false, Some(parseDateTime("2007-07-19T00:00:00.000-07:00")))
           ),
           postalAddresses = Vector(
             PostalAddress(
@@ -57,8 +58,13 @@ class ProfileTest extends FreeSpec with Matchers with JacksonSupport {
               country = Some("US"),
               zipCode = Some("34105"),
               addressType = AddressType.BUSINESS,
-              primary = false
+              primary = false,
+              inactiveDate = Some(parseDateTime("2007-07-19T00:00:00.000-07:00"))
             )
+          ),
+          Vector(
+            PhoneNumber("555-123-4567", PhoneNumberType.BUSINESS, primary = true),
+            PhoneNumber("415-555-1234", PhoneNumberType.HOME, primary = false, Some(parseDateTime("2007-07-19T00:00:00.000-07:00")))
           )
         )
       }

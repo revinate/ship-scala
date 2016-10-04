@@ -1,5 +1,7 @@
 package com.revinate.ship.profile
 
+import java.time.OffsetDateTime
+
 import com.fasterxml.jackson.core.`type`.TypeReference
 import com.fasterxml.jackson.module.scala.JsonScalaEnumeration
 import com.revinate.ship.profile.PostalAddress.AddressType.AddressType
@@ -25,5 +27,5 @@ case class PostalAddress(
     zipCode: Option[String] = None,
     @JsonScalaEnumeration(classOf[AddressTypeTypeRef]) addressType: AddressType,
     primary: Boolean,
-    inactiveDate: Option[Boolean] = None
+    inactiveDate: Option[OffsetDateTime] = None
 )
