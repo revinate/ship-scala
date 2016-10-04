@@ -5,7 +5,7 @@ import java.time.OffsetDateTime.{parse => parseDateTime}
 
 import com.revinate.ship.JacksonSupport
 import com.revinate.ship.common.TimeSpan.TimeSpanUnit
-import com.revinate.ship.common.{CompanyInfo, GuestNote, MonetaryAmount, TimeSpan}
+import com.revinate.ship.common._
 import com.revinate.ship.gueststay.GuestStay.{GuestStayAction, GuestStayStatusCode}
 import com.revinate.ship.gueststay.Rate.RateTimeUnit
 import com.revinate.ship.implicits._
@@ -226,6 +226,14 @@ class GuestStayTest extends FreeSpec with Matchers with JacksonSupport {
               `type` = Some("SYSTEM"),
               time = Some(parseDateTime("2009-08-15T16:52:40.000-07:00"))
             )
+          ),
+          pmsDefinedFields = Vector(
+            UserDefinedField("UDF01", "A"),
+            UserDefinedField("UDF02", "1")
+          ),
+          propertyDefinedFields = Vector(
+            UserDefinedField("PUDF01", "A1"),
+            UserDefinedField("PUDF02", "1.3")
           )
         )
       }
