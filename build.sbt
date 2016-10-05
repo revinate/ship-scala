@@ -1,6 +1,6 @@
 name := "ship-scala"
 
-version := "1.0"
+version := "1.0.0-SNAPSHOT"
 
 scalaVersion := "2.11.8"
 
@@ -15,3 +15,39 @@ libraryDependencies += "com.fasterxml.jackson.datatype" % "jackson-datatype-jsr3
 libraryDependencies += "com.fasterxml.jackson.module" % "jackson-module-scala_2.11" % jacksonVersion
 
 logBuffered in Test := false
+
+/* Maven Publishing */
+
+publishMavenStyle := true
+
+publishTo := {
+  val nexus = "https://oss.sonatype.org/"
+  if (isSnapshot.value)
+    Some("snapshots" at nexus + "content/repositories/snapshots")
+  else
+    Some("releases" at nexus + "service/local/staging/deploy/maven2")
+}
+
+pomExtra := (
+  <url>https://github.com/revinate/ship-scala</url>
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>http://opensource.org/licenses/MIT</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>revinate</id>
+      <name>Revinate, Inc</name>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:git:git://github.com/revinate/ship-scala.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com:revinate/ship-scala.git</developerConnection>
+    <url>https://github.com/revinate/ship-scala</url>
+  </scm>
+)
+
+pomIncludeRepository := { _ => false }
