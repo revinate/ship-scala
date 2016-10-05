@@ -29,6 +29,13 @@ publishTo := {
     Some("releases" at nexus + "service/local/staging/deploy/maven2")
 }
 
+credentials += Credentials(
+  realm = "Sonatype Nexus Repository Manager",
+  host = "oss.sonatype.org",
+  userName = sys.env.getOrElse("SONATYPE_USER", ""),
+  passwd = sys.env.getOrElse("SONATYPE_PASS", "")
+)
+
 pomExtra := (
   <url>https://github.com/revinate/ship-scala</url>
   <licenses>
