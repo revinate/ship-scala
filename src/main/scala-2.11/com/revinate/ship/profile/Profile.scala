@@ -85,7 +85,6 @@ case class Profile(
     guestNotes: Vector[GuestNote] = Vector.empty
 ) {
 
-  // scalastyle:off parameter.number
   /*
     The json creator has to be an alternate constructor because of https://github.com/FasterXML/jackson-module-scala/issues/110
     Ideally this should be a factory method in the companion object
@@ -146,6 +145,4 @@ case class Profile(
     creditCards = creditCards.getOrElse(Vector.empty),
     guestNotes = guestNotes.getOrElse(Vector.empty)
   )
-  // scalastyle:on parameter.number
-
 }

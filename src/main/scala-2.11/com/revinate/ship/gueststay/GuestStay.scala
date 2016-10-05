@@ -128,7 +128,6 @@ case class GuestStay(
     propertyDefinedFields: Vector[UserDefinedField] = Vector.empty
 ) {
 
-  // scalastyle:off method.length parameter.number
   /*
     The json creator has to be an alternate constructor because of https://github.com/FasterXML/jackson-module-scala/issues/110
     Ideally this should be a factory method in the companion object
@@ -237,7 +236,4 @@ case class GuestStay(
     pmsDefinedFields = pmsDefinedFields.getOrElse(Vector.empty),
     propertyDefinedFields = propertyDefinedFields.getOrElse(Vector.empty)
   )
-  // scalastyle:on method.length parameter.number
 }
-
-
