@@ -27,13 +27,19 @@ case class MonetaryValue(value: BigDecimal, currency: Option[String] = None) {
     case (Some(curr), None) => Some(MonetaryValue(this.value + that.value, curr))
     case (None, Some(curr)) => Some(MonetaryValue(this.value + that.value, curr))
     case (Some(curr1), Some(curr2)) if curr1 == curr2 => Some(MonetaryValue(this.value + that.value, curr1))
-    case (Some(curr1), Some(curr2)) if curr1 != curr2 => (this.value, that.value) match {
-      case (left, right) if left == 0 && right == 0 => Some(MonetaryValue(0, None))
-      case (left, right) if left != 0 && right == 0 => Some(MonetaryValue(left, this.currency))
-      case (left, right) if left == 0 && right != 0 => Some(MonetaryValue(right, that.currency))
-      case _ => None
-    }
+    case (Some(curr1), Some(curr2)) if curr1 != curr2 => addWithDifferentCurrency(that)
     case (None, None) => Some(MonetaryValue(this.value + that.value, None))
+    case _ => None
+  }
+
+  private def addWithDifferentCurrency(that: MonetaryValue) = (this.value, that.value) match {
+    case (left, right) if left == 0 =>
+      if (right == 0) {
+        Some(MonetaryValue(0, None))
+      } else {
+        Some(MonetaryValue(right, that.currency))
+      }
+    case (left, right) if left != 0 && right == 0 => Some(MonetaryValue(left, this.currency))
     case _ => None
   }
 
