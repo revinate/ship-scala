@@ -18,6 +18,13 @@ object PhoneNumber {
 
 }
 
+/** A phone number
+  *
+  * @param phoneNumber     Phone number
+  * @param phoneNumberType Phone number type
+  * @param primary         Whether this is the primary phone number on the profile. Only one phone number can be primary per profile
+  * @param inactiveDate    Time after which the phone number should not be used
+  */
 case class PhoneNumber(
     phoneNumber: String,
     @JsonScalaEnumeration(classOf[PhoneNumberTypeTypeRef]) phoneNumberType: PhoneNumberType,

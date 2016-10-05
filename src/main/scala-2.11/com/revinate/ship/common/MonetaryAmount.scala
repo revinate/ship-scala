@@ -6,6 +6,13 @@ object MonetaryAmount {
   def apply(amountBeforeTax: MonetaryValue, taxAmount: MonetaryValue) = new MonetaryAmount(Some(amountBeforeTax), Some(taxAmount))
 }
 
+/** An amount of money with associated tax
+  *
+  * @param amountBeforeTax Amount before tax
+  * @param taxAmount       Tax amount
+  * @param value           Number of units of the currency of the pre-tax amount. Use amountBeforeTax instead. Deprecated
+  * @param currency        ISO4217 3-character currency code of the pre-tax amount. Use amountBeforeTax instead. Deprecated
+  */
 case class MonetaryAmount(
     amountBeforeTax: Option[MonetaryValue],
     taxAmount: Option[MonetaryValue],

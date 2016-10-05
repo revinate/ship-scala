@@ -36,6 +36,35 @@ object Profile {
 
 }
 
+/** The SHIP profile
+  *
+  * A profile object represents a person or organization that may be associated with a guest-stay, for example
+  * the primary guest, an accompanying guest, a corporate entity, or a travel agency.
+  *
+  * @param action           Action that triggered the profile message
+  * @param property         Property code that the profile belongs to
+  * @param interfaceType    Usually a code to identify the type of PMS. Internal use only
+  * @param remoteSystemName Name of the remote system. Usually the origin of the data. Internal use only
+  * @param profileId        ID of the profile
+  * @param profileType      Profile type
+  * @param title            Title of the guest
+  * @param firstName        First name of the guest
+  * @param middleName       Middle name of the guest
+  * @param lastName         Last name of the guest, or name of a non-guest entity
+  * @param gender           Gender of the guest
+  * @param dateOfBirth      Date-of-birth of the guest
+  * @param vipStatus        VIP status code of the guest
+  * @param primaryLanguage  Primary language of the guest, preferably ISO639-1 2-character code
+  * @param companyInfo      Company of the guest
+  * @param emailOptOut      Whether the entity in the profile has opted out of email marketing
+  * @param mailOptOut       Whether the entity in the profile has opted out of mail marketing
+  * @param emailAddresses   Email addresses associated with the profile
+  * @param postalAddresses  Postal addresses associated with the profile
+  * @param phoneNumbers     Phone numbers associated with the profile
+  * @param memberships      Loyalty program memberships associated with the profile
+  * @param creditCards      Credit cards associated with the profile
+  * @param guestNotes       Notes attached to the profile
+  */
 case class Profile(
     action: Action,
     property: String,

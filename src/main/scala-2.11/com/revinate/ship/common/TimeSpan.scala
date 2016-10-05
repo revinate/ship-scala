@@ -18,6 +18,12 @@ object TimeSpan {
 
 }
 
+/** A time period with a start time
+  *
+  * @param startTime    Start time
+  * @param timeUnits    Number of time units
+  * @param timeUnitType Type of the time units
+  */
 case class TimeSpan(
     startTime: OffsetDateTime,
     timeUnits: Int,

@@ -18,8 +18,13 @@ object StayLength {
 
 }
 
+/** A description of the length of stay
+  *
+  * @param stayLength      Number of days of the stay
+  * @param stayLengthUnits Type of the time units of the stay length. Should be omitted as only "DAY" is possible. Deprecated
+  */
 case class StayLength(
     stayLength: Option[Int] = None,
-    @JsonScalaEnumeration(classOf[StayLengthUnitType]) stayLengthUnits: Option[StayLengthUnit] = None
+    @Deprecated @JsonScalaEnumeration(classOf[StayLengthUnitType]) stayLengthUnits: Option[StayLengthUnit] = None
 )
 

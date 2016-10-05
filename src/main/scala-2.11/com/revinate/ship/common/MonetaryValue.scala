@@ -16,6 +16,11 @@ object MonetaryValue {
   }
 }
 
+/** A monetary value consisting of a number and a currency
+  *
+  * @param value    Number of units of the currency
+  * @param currency ISO4217 3-character currency code
+  */
 case class MonetaryValue(value: BigDecimal, currency: Option[String] = None) {
 
   def +(that: MonetaryValue): Option[MonetaryValue] = (this.currency, that.currency) match {

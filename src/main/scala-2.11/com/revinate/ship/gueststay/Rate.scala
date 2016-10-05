@@ -26,6 +26,13 @@ object Rate {
 
 }
 
+/** A rate during a specific time period
+  *
+  * @param amount       Rate per time unit
+  * @param startTime    Start time of the rate
+  * @param timeUnits    Number of time units of the rate
+  * @param timeUnitType Type of the time units
+  */
 case class Rate(
     amount: MonetaryValue,
     startTime: Option[OffsetDateTime],

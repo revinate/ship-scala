@@ -29,6 +29,60 @@ object GuestStay {
 
 }
 
+/** The SHIP guest stay
+  *
+  * A guestStay object represents a past, current, or upcoming stay by a guest or guests at a property.
+  * It contains information about the location, duration and other details of the stay, as well as profile
+  * information about the guests and other associated entities.
+  *
+  * @param action                      Action that triggered the guest-stay message
+  * @param property                    Property code that the stay belongs to
+  * @param interfaceType               Usually a code to identify the type of PMS. Internal use only
+  * @param remoteSystemName            Name of the remote system. Usually the origin of the data. Internal use only
+  * @param confirmationCode            ID of the stay
+  * @param statusCode                  Current status of the stay
+  * @param guaranteeCode               Code representing the type of guarantee for the stay
+  * @param lastUpdatedAt               Time at which the stay was last updated
+  * @param lastUpdatedBy               Name, username, or initials of the user or system that last updated the stay
+  * @param bookingNumber               ID assigned to the stay by the booking engine or central reservation system
+  * @param bookingDate                 Time at which the stay was booked
+  * @param bookedBy                    Name, username, or initials of the user or system that booked the stay
+  * @param reservationSource           Channel by which the stay was booked
+  * @param cancellationNumber          ID assigned to the cancellation of the stay
+  * @param cancellationDate            Time at which the stay was canceled
+  * @param canceledBy                  Name, username, or initials of the user or system that canceled the stay
+  * @param checkinDate                 Scheduled check-in date of the stay
+  * @param actualCheckinDate           Actual check-in time of the stay
+  * @param checkedInBy                 Name, username, or initials of the user or system that checked the guest in
+  * @param checkoutDate                Scheduled check-out date of the stay
+  * @param actualCheckoutDate          Actual check-out time of the stay
+  * @param checkedOutBy                Name, username, or initials of the user or system that checked the guest out
+  * @param stayLength                  Length of the stay
+  * @param numberOfAdults              Number of adults in the stay
+  * @param numberOfChildren            Number of children in the stay
+  * @param roomNumber                  Room number or room identifier
+  * @param roomType                    Actual room type of the stay, preferably in code/short form
+  * @param roomTypeChargeCode          Room type charged to the stay
+  * @param blockCode                   Block code of the stay
+  * @param numberOfRooms               Number of rooms of the stay
+  * @param market                      Market segment name or code of the stay
+  * @param purposeOfStay               Purpose of the stay
+  * @param companyInfo                 Travel agency associated with the stay. Attach a profile object with profileType of "TRAVEL" to the stay instead of using this field. Deprecated
+  * @param totalRoomRevenue            Room revenue amount of the stay
+  * @param totalFoodAndBeverageRevenue Food and beverage revenue amount of the stay
+  * @param totalLuggageRevenue         Luggage revenue amount of the stay
+  * @param totalOtherRevenue           Total of all revenue amounts excluding room, food, beverage, and luggage, of the stay
+  * @param totalTaxes                  Total of all taxes. Use the taxAmount field in each monetaryAmount object instead. Deprecated
+  * @param totalRemainingBalance       Balance remaining on the stay
+  * @param totalDepositRequired        Deposit amount required for the stay
+  * @param depositRequiredDate         Date on which deposit is due
+  * @param ratePlans                   Rate plans attached to the stay
+  * @param services                    Services rendered during the stay
+  * @param profiles                    Profiles associated with the stay. A minimum of 1 profile with profileType "GUEST" is required.
+  * @param guestNotes                  Notes attached to the stay
+  * @param pmsDefinedFields            PMS-defined fields
+  * @param propertyDefinedFields       Property-defined fields
+  */
 case class GuestStay(
     action: Action,
     property: String,
