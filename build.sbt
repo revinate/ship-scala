@@ -1,3 +1,4 @@
+organization := "com.revinate.ship"
 name := "ship-scala"
 
 version := "1.1.0-SNAPSHOT"
