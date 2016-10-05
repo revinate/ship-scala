@@ -18,8 +18,16 @@ libraryDependencies += "org.scalatest" % "scalatest_2.11" % scalaTestVersion % T
 
 logBuffered in Test := false
 
+/* Scalastyle config */
+
+// this config is necessary for sbt 0.13 because the source folders include src/main/scala-2.11
 scalastyleSources := (sourceDirectories in Compile).value
 (scalastyleSources in Test) := (sourceDirectories in Test).value
+
+// run scalastyle as part of the compilation - the config is here http://www.scalastyle.org/sbt.html
+lazy val compileScalastyle = taskKey[Unit]("compileScalastyle")
+compileScalastyle := org.scalastyle.sbt.ScalastylePlugin.scalastyle.in(Compile).toTask("").value
+(compile in Compile) <<= (compile in Compile) dependsOn compileScalastyle
 
 /* Maven Publishing */
 
