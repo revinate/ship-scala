@@ -1,5 +1,7 @@
 = SHIP Scala Bindings
 
+image:https://travis-ci.org/revinate/ship-scala.svg?branch=master["Build Status", link="https://travis-ci.org/revinate/ship-scala"]
+
 The Simple Hospitality Interchange Protocol, or SHIP, is a JSON-based message format, combined with a simple HTTP-based API, that aims to make it easy for hospitality-related systems and applications to exchange messages. This library is a Scala 2.11 implementation of the SHIP message types.
 
 For more details about SHIP please refer to the https://github.com/revinate/ship-sdk[ship-sdk] project.
