@@ -62,6 +62,10 @@ case class Profile(
     guestNotes: Vector[GuestNote] = Vector.empty
 ) {
 
+  /*
+    The json creator has to be an alternate constructor because of https://github.com/FasterXML/jackson-module-scala/issues/110
+    Ideally this should be a factory method in the companion object
+   */
   @JsonCreator
   def this(
       @JsonProperty("action") @JsonScalaEnumeration(classOf[ActionTypeRef]) action: Action,
@@ -105,6 +109,12 @@ case class Profile(
     companyInfo = companyInfo,
     emailOptOut = emailOptOut,
     mailOptOut = mailOptOut,
+
+    /*
+      If https://github.com/FasterXML/jackson-module-scala/pull/257 works then we can use the
+      default constructor for everything. Meanwhile we use this alternate constructor to handle
+      the null collection as an Option
+    */
     emailAddresses = emailAddresses.getOrElse(Vector.empty),
     postalAddresses = postalAddresses.getOrElse(Vector.empty),
     phoneNumbers = phoneNumbers.getOrElse(Vector.empty),
