@@ -22,7 +22,7 @@ object Rate {
       startTime: OffsetDateTime,
       timeUnits: Int,
       timeUnitType: RateTimeUnit
-  ) = new Rate(amount, Some(startTime), Some(timeUnits), Some(timeUnitType))
+  ): Rate = new Rate(amount, Some(startTime), Some(timeUnits), Some(timeUnitType))
 
 }
 

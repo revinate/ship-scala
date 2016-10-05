@@ -18,6 +18,9 @@ libraryDependencies += "org.scalatest" % "scalatest_2.11" % scalaTestVersion % T
 
 logBuffered in Test := false
 
+scalastyleSources := (sourceDirectories in Compile).value
+(scalastyleSources in Test) := (sourceDirectories in Test).value
+
 /* Maven Publishing */
 
 publishMavenStyle := true

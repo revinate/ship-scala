@@ -3,7 +3,10 @@ package com.revinate.ship.common
 object MonetaryAmount {
   val empty = new MonetaryAmount(None, None)
 
-  def apply(amountBeforeTax: MonetaryValue, taxAmount: MonetaryValue) = new MonetaryAmount(Some(amountBeforeTax), Some(taxAmount))
+  def apply(
+      amountBeforeTax: MonetaryValue,
+      taxAmount: MonetaryValue
+  ): MonetaryAmount = new MonetaryAmount(Some(amountBeforeTax), Some(taxAmount))
 }
 
 /** An amount of money with associated tax
@@ -28,5 +31,5 @@ case class MonetaryAmount(
       case _ => None
     }
 
-  def *(multiplier: BigDecimal) = MonetaryAmount(amountBeforeTax.map(_ * multiplier), taxAmount.map(_ * multiplier))
+  def *(multiplier: BigDecimal): MonetaryAmount = MonetaryAmount(amountBeforeTax.map(_ * multiplier), taxAmount.map(_ * multiplier))
 }

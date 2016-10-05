@@ -61,7 +61,8 @@ object GuestStay {
   * @param numberOfRooms               Number of rooms of the stay
   * @param market                      Market segment name or code of the stay
   * @param purposeOfStay               Purpose of the stay
-  * @param companyInfo                 Travel agency associated with the stay. Attach a profile object with profileType of "TRAVEL" to the stay instead of using this field. Deprecated
+  * @param companyInfo                 Travel agency associated with the stay. Attach a profile object with profileType of "TRAVEL" to the stay
+  *                                    instead of using this field. Deprecated
   * @param totalRoomRevenue            Room revenue amount of the stay
   * @param totalFoodAndBeverageRevenue Food and beverage revenue amount of the stay
   * @param totalLuggageRevenue         Luggage revenue amount of the stay
@@ -127,10 +128,11 @@ case class GuestStay(
     propertyDefinedFields: Vector[UserDefinedField] = Vector.empty
 ) {
 
+  // scalastyle:off method.length parameter.number
   /*
     The json creator has to be an alternate constructor because of https://github.com/FasterXML/jackson-module-scala/issues/110
     Ideally this should be a factory method in the companion object
- */
+  */
   @JsonCreator
   def this(
       @JsonProperty("action") action: String,
@@ -235,6 +237,7 @@ case class GuestStay(
     pmsDefinedFields = pmsDefinedFields.getOrElse(Vector.empty),
     propertyDefinedFields = propertyDefinedFields.getOrElse(Vector.empty)
   )
+  // scalastyle:on method.length parameter.number
 }
 
 

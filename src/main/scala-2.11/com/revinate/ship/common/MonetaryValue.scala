@@ -4,9 +4,9 @@ object MonetaryValue {
 
   val zero = MonetaryValue(0)
 
-  def apply(value: BigDecimal) = new MonetaryValue(value, None)
+  def apply(value: BigDecimal): MonetaryValue = new MonetaryValue(value, None)
 
-  def apply(value: BigDecimal, currency: String) = new MonetaryValue(value, Option(currency))
+  def apply(value: BigDecimal, currency: String): MonetaryValue = new MonetaryValue(value, Option(currency))
 
   def addValues(left: Option[MonetaryValue], right: Option[MonetaryValue]): Option[MonetaryValue] = (left, right) match {
     case (Some(leftValue), None) => Some(leftValue)
