@@ -52,3 +52,6 @@ pomExtra := (
 )
 
 pomIncludeRepository := { _ => false }
+
+// for jar signing
+pgpPassphrase := sys.env.get("PGP_PASSPHRASE").map(_.toCharArray)
