@@ -2,3 +2,13 @@ language: scala
 jdk: oraclejdk8
 sudo: false
 script: sbt clean test
+env:
+  global:
+    - secure: "QAPH+i1SnnIx+6ay74Kut70UfbA83x2nXxK2rPp8KB9FXpKfUBtFW/Gesdsubp51pTUhk+ftrHUEQ47n5+wtbbXSaCYoVBT9zgdthrivKFXOhiS9S9jy4gQmB0OVT7vCFKdC0NF2asBVRKGTSWP0D35oEDHAxkJaE+CNSLdjFn6Zvg/RGSXH4Aei4iUzuvqXgtx9Urzd6NIskw/yid0NUsax0WRz1Hr3dqF6FpkRoQZdwzzlX0TP4DavkXmLdxVG1cFXYYIztiALOvcH4OSIlQ2THQkr790Zpkmp67fmtlDT058LpTjt+KCn1sAiU/FL9G6Y3QOaVDrwwkX2Vh6jqYuU1oLaALJhq62GfJ/9c34rfEfhzkRRgfr3oQnTddS/u+aQGmeGiklcsRRZq5SiSy1cSFnHqN/qpqbGkB1uVI9q44I+/OwaKfU5EXfgxo+zTWXa9lzRPN1+jUu0GwQSoG8rTq4VYiE0zgKOJS6UCUR199szI5glOaaqIHgEWd9id3cXOCjYWbMyPQfnmg2Q9On8nGB5WCniaVgf6t5UOb5vDuxM7zCeySo9dzCXJtk12t7Kwt9No5N9tYLG+QKGW22/yo/Ki1sXU2m7Q09ZXwqiiFzZOy8YA8Ka6Tuh02yxIx7StTQ+ppjd5oh6CbpNad1PX9khB7l3Q0fI2sLrM+o="
+    - secure: "V3ORLmhiko/09177OH+GqXd9zO7W44x5cbLLyXTKBnAJzVfnpRtqIg84+MS4wyW1EGQM94nHNzGN7I1hCEo4e26UJ57Olb66SthKfH+9K7z3RdGOXQg0Tm9KjeLkdkuzBKkIEQc+VuDaZP8ow3Az7VVsjcofH1Hj2T4UwrijkbslQdBKQAiA3rCaucXLseR+P7jvHXIfPk2nLOAtd5aCBayMgRk+P2BEtznRM7s6ltzIOMIFZM/v4W2lwg+bf8DQane7vlzAXmb5KkiARIhZHTKu5Bs5JHifXUUQDIFkp1wpjhF2fg6NbwHEiZ8ujKZcIwDdMxF7v3BUuXbQ6WuXN6GGRUUqhmXPSy8mcF67K1oz0qlRmyxPpLHtXkGdmCJg8qCgY8RCCzCLnRGgotbezKu8voA4IVA1El0iIEG83zcA2ZgiO1o0D5/zxAk9nKMQCWZkNyDkOez5WPvkfs4tImk1hum+13qj7ShZARoF+u/Tjh6tzLzbnRxsQ0Gkdxx0IRcen2ypF6W12X1rjzLO1xqMc2sQfajmEBD3jsr2vALbdnRCBtMO0v8Mj0KNmgaAA6XdWfabXVXK1MJJsOBxdFHJJ5eSjgY2upwF7KfPaEIb70piFavyf39QlKnwOEKg8lbSu3Re8bDMcm20OFZKhwsPdiA/mV6s+OeXVbrUhh8="
+before_install:
+  - mkdir -p ~/.gnupg
+  - openssl aes-256-cbc -pass pass:$SONATYPE_PASS -in deploy/secring.gpg.enc -out ~/.gnupg/secring.gpg -d
+  - openssl aes-256-cbc -pass pass:$SONATYPE_PASS -in deploy/pubring.gpg.enc -out ~/.gnupg/pubring.gpg -d
+  - mkdir -p ~/.sbt/0.13/plugins
+  - openssl aes-256-cbc -pass pass:$SONATYPE_PASS -in deploy/gpg.sbt.enc -out ~/.sbt/0.13/plugins/gpg.sbt -d
