@@ -7,11 +7,11 @@ import com.fasterxml.jackson.module.scala.experimental.ScalaObjectMapper
 
 package object ship {
 
-  lazy val objectMapper = (new ObjectMapper() with ScalaObjectMapper)
-    .registerModules(new JavaTimeModule(), DefaultScalaModule)
-    .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
-    .configure(DeserializationFeature.READ_DATE_TIMESTAMPS_AS_NANOSECONDS, false)
-    .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-    .configure(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE, false)
+  val objectMapper = (new ObjectMapper() with ScalaObjectMapper)
+      .registerModules(new JavaTimeModule(), DefaultScalaModule)
+      .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
+      .configure(DeserializationFeature.READ_DATE_TIMESTAMPS_AS_NANOSECONDS, false)
+      .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+      .configure(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE, false)
 
 }
