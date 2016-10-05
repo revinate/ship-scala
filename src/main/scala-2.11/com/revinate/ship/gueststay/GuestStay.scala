@@ -3,12 +3,10 @@ package com.revinate.ship.gueststay
 import java.time.{LocalDate, OffsetDateTime}
 
 import com.fasterxml.jackson.annotation.{JsonCreator, JsonProperty}
-import com.fasterxml.jackson.core.`type`.TypeReference
-import com.fasterxml.jackson.module.scala.JsonScalaEnumeration
 import com.revinate.ship.common._
 import com.revinate.ship.gueststay.GuestStay.GuestStayAction.Action
 import com.revinate.ship.gueststay.GuestStay.GuestStayStatusCode.StatusCode
-import com.revinate.ship.gueststay.GuestStay.{ActionTypeRef, StatusCodeTypeRef}
+import com.revinate.ship.gueststay.GuestStay.{GuestStayAction, GuestStayStatusCode}
 import com.revinate.ship.profile.Profile
 
 object GuestStay {
@@ -18,14 +16,10 @@ object GuestStay {
     val BOOK, ADD, WAITLIST, CONFIRM, DENY, CANCEL, CHECKIN, NOSHOW, CHECKOUT, EDIT, NA = Value
   }
 
-  class ActionTypeRef extends TypeReference[GuestStayAction.type]
-
   object GuestStayStatusCode extends Enumeration {
     type StatusCode = Value
     val REQUESTED, RESERVED, WAITLISTED, REQUESTDENIED, INHOUSE, CANCELED, NOSHOW, CHECKEDOUT = Value
   }
-
-  class StatusCodeTypeRef extends TypeReference[GuestStayStatusCode.type]
 
 }
 
@@ -139,12 +133,12 @@ case class GuestStay(
  */
   @JsonCreator
   def this(
-      @JsonProperty("action") @JsonScalaEnumeration(classOf[ActionTypeRef]) action: Action,
+      @JsonProperty("action") action: String,
       @JsonProperty("property") property: String,
       @JsonProperty("interfaceType") interfaceType: String,
       @JsonProperty("remoteSystemName") remoteSystemName: String,
       @JsonProperty("confirmationCode") confirmationCode: String,
-      @JsonProperty("statusCode") @JsonScalaEnumeration(classOf[StatusCodeTypeRef]) statusCode: Option[StatusCode],
+      @JsonProperty("statusCode") statusCode: Option[String],
       @JsonProperty("guaranteeCode") guaranteeCode: Option[String],
       @JsonProperty("lastUpdatedAt") lastUpdatedAt: Option[OffsetDateTime],
       @JsonProperty("lastUpdatedBy") lastUpdatedBy: Option[String],
@@ -187,12 +181,12 @@ case class GuestStay(
       @JsonProperty("pmsDefinedFields") pmsDefinedFields: Option[Vector[UserDefinedField]],
       @JsonProperty("propertyDefinedFields") propertyDefinedFields: Option[Vector[UserDefinedField]]
   ) = this(
-    action = action,
+    action = GuestStayAction.withName(action),
     property = property,
     interfaceType = interfaceType,
     remoteSystemName = remoteSystemName,
     confirmationCode = confirmationCode,
-    statusCode = statusCode,
+    statusCode = statusCode.map(GuestStayStatusCode.withName),
     guaranteeCode = guaranteeCode,
     lastUpdatedAt = lastUpdatedAt,
     lastUpdatedBy = lastUpdatedBy,
