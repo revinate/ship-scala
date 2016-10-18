@@ -1,7 +1,7 @@
 organization := "com.revinate"
 name := "ship-scala"
 
-version := "1.1.1-SNAPSHOT"
+version := "1.1.1"
 
 scalaVersion := "2.11.8"
 
