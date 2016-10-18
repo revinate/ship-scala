@@ -1,0 +1,8 @@
+{
+  "action": "ADD",
+  "property": "AVERTINE",
+  "interfaceType": "SHIP",
+  "remoteSystemName": "avertine_ship",
+  "profileType": "GUEST",
+  "lastName": "Smith"
+}

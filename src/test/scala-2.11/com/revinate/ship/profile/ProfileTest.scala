@@ -22,7 +22,7 @@ class ProfileTest extends FreeSpec with Matchers with JacksonSupport {
           property = "AVERTINE",
           interfaceType = "SHIP",
           remoteSystemName = "avertine_ship",
-          profileId = "28001",
+          profileId = Some("28001"),
           profileType = ProfileType.GUEST,
           title = Some("Mr."),
           firstName = Some("John"),
@@ -102,6 +102,19 @@ class ProfileTest extends FreeSpec with Matchers with JacksonSupport {
               time = Some(parseDateTime("2013-05-02T16:55:57.000-07:00"))
             )
           )
+        )
+      }
+
+      "should handle minimal version" in {
+        val profile = loadToObject("/samples/profiles/profile-required-fields-only.json", classOf[Profile])
+
+        profile shouldEqual Profile(
+          action = ProfileAction.ADD,
+          property = "AVERTINE",
+          interfaceType = "SHIP",
+          remoteSystemName = "avertine_ship",
+          profileType = ProfileType.GUEST,
+          lastName = "Smith"
         )
       }
     }
